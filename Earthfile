@@ -14,4 +14,5 @@ build:
 
 k8s:
  FROM +build
- 
+ LOCALLY
+ RUN kubectl create cm kc-rest-provider --from-file=keycloak-rest-provider-1.0-SNAPSHOT.jar=./earthly-output/keycloak-rest-provider-1.0-SNAPSHOT.jar -o yaml --dry-run=client | kubectl -n tools replace -f -
